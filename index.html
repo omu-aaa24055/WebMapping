@@ -131,12 +131,6 @@
             }
             addRouteLayer2();
 
-
-            var LayerControl = L.control.layers({
-            "地理院地図（標準）": chiriinLayer,
-            "OpenStreetMap": backgroundLayer
-            }).addTo(map); 
-
             // 行政区域レイヤーを作成
             fetch("./N03-23_27_230101.geojson") // 行政区域データを非同期読み込み
                 .then((response) => response.json())
