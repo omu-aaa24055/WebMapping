@@ -112,6 +112,22 @@
             // 地図にルートを追加
             addRouteLayer();
 
+                        //なかもずキャンパスからラウンドワン堺中央環状点（バイト先）まで
+            const url2 = 'https://routing.openstreetmap.de/routed-car/route/v1/driving/135.53634,34.55800;135.506274,34.544865?geometries=geojson&overview=full'
+            
+            async function addRouteLayer2(){
+            const response = await fetch(url2);
+            const json = await response.json();
+
+            routeLayer2 = L.geoJSON(json['routes'][0]['geometry'],{
+                    "color": "#00AAFF", // 青色
+                    "weight": 6,
+                    "opacity": 0.7
+                });
+                routeLayer2.addTo(map);
+            }
+            addRouteLayer2();
+
             var LayerControl = L.control.layers({
             "地理院地図（標準）": chiriinLayer,
             "OpenStreetMap": backgroundLayer
