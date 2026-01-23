@@ -91,6 +91,8 @@
                     .addTo(map);
                 L.geoJSON(json).addTo(markers); // クラスタリングレイヤーにGeoJSONデータをセット
             });
+            let routeLayer;
+            let routeLayer2;
 
                 // ローカルPC上のOSRMサーバで杉本キャンパスからなかもずキャンパスまでのルートを検索するURL
                 const url = 'https://routing.openstreetmap.de/routed-car/route/v1/driving/135.505276,34.592331;135.506274,34.544865?geometries=geojson&overview=full'
@@ -109,10 +111,11 @@
                 const bounds = routeLayer.getBounds();
                 map.fitBounds(bounds); 
             }
+
             // 地図にルートを追加
             addRouteLayer();
 
-                        //なかもずキャンパスからラウンドワン堺中央環状点（バイト先）まで
+            //なかもずキャンパスからラウンドワン堺中央環状点（バイト先）まで
             const url2 = 'https://routing.openstreetmap.de/routed-car/route/v1/driving/135.53634,34.55800;135.506274,34.544865?geometries=geojson&overview=full'
             
             async function addRouteLayer2(){
@@ -127,6 +130,7 @@
                 routeLayer2.addTo(map);
             }
             addRouteLayer2();
+
 
             var LayerControl = L.control.layers({
             "地理院地図（標準）": chiriinLayer,
